@@ -1,39 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Common;
 using Fias.Update.Lib;
 
 namespace Fias.Update
 {
-    public partial class FiasConnectionUserControl : UserControl
+    public partial class FiasConnectionUserControl
     {
-        private string _configFileName = string.Empty;
-        public FiasUpdate Config { get; set; }        
+        private readonly Model model = Singleton<Model>.Instance;
+        private readonly string configFileName = string.Empty;
+
+        public FiasUpdate Config { get; set; }
+        public Model Model { get { return model; } }
+
         public FiasConnectionUserControl()
         {
             InitializeComponent();
-            _configFileName = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Fias.Update.xml";
-            if (File.Exists(_configFileName))
-                Config = FiasUpdate.LoadFromFile(_configFileName);
-            else
-                Config = new FiasUpdate();
-            this.DataContext = Config;
+            configFileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Fias.Update.xml";
+            Config = File.Exists(configFileName) ? FiasUpdate.LoadFromFile(configFileName) : new FiasUpdate();
+            DataContext = Config;
         }
         public void DoNext()
         {
-            Config.SaveToFile(_configFileName);
+            Config.SaveToFile(configFileName);
+        }
+        private void RbMsSql_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Model.SelectedServerType=ServerType.MsSql;
+        }
+
+        private void RbFirebird_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Model.SelectedServerType=ServerType.Firebird;
         }
     }
 }

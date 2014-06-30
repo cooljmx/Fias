@@ -33,6 +33,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=4.2.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.4.2.0.0\lib\net40-client\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -56,6 +60,7 @@
     <Compile Include="Mapping\Fias.Map.Database.cs" />
     <Compile Include="Mapping\Fias.Map.Field.cs" />
     <Compile Include="Mapping\Fias.Map.Table.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\FiasServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -92,6 +97,7 @@
     <None Include="Fias.Mapping.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
     <None Include="Service References\FiasServiceReference\DownloadService.wsdl" />
     <None Include="Service References\FiasServiceReference\Fias.Update.Lib.FiasServiceReference.DownloadFileInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

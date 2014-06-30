@@ -1,30 +1,18 @@
 ﻿using Fias.Update.Lib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Fias.Update
 {
-    public partial class FiasDbUpdateWorkerUserControl : UserControl
+    public partial class FiasDbUpdateWorkerUserControl
     {
-        private FiasProgressInfo ProgressInfo = null;
-        private FiasDbUpdateWorker _dbUpdateWorker = new FiasDbUpdateWorker();
-        public FiasDbUpdateWorker DbUpdateWorker { get { return _dbUpdateWorker; } }
+        private FiasProgressInfo progressInfo;
+        private readonly FiasDbUpdateWorker dbUpdateWorker = new FiasDbUpdateWorker();
+        public FiasDbUpdateWorker DbUpdateWorker { get { return dbUpdateWorker; } }
         public FiasDbUpdateWorkerUserControl()
         {
             InitializeComponent();
-            this.DataContext = DbUpdateWorker;
+            DataContext = DbUpdateWorker;
             DbUpdateWorker.Dispatcher = Dispatcher;
             DbUpdateWorker.OnUpdateStart += DBUpdateWorker_OnUpdateStart;
             DbUpdateWorker.OnUpdateComplete += DBUpdateWorker_OnUpdateEnd;
@@ -37,20 +25,19 @@ namespace Fias.Update
 
         void DbUpdateWorker_OnLoadDataComplete()
         {
-            Dispatcher.BeginInvoke(new ThreadStart(delegate
-            {
-                ProgressInfo.Close();
-            }));
+            Dispatcher.BeginInvoke(new ThreadStart(() => progressInfo.Close()));
         }
 
         void DBUpdateWorker_OnLoadDataStart()
         {
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                ProgressInfo = new FiasProgressInfo();
-                ProgressInfo.TextBlock.Text = "Загрузка данных";
-                ProgressInfo.ProgressBar.IsIndeterminate = true;
-                ProgressInfo.Show();
+                progressInfo = new FiasProgressInfo
+                {
+                    TextBlock = {Text = "Загрузка данных"},
+                    ProgressBar = {IsIndeterminate = true}
+                };
+                progressInfo.Show();
             }));
         }
 
@@ -78,21 +65,21 @@ namespace Fias.Update
             }));
         }
 
-        void DbCache_OnRebuildCache(long APosition, long ALength, string AText)
+        void DbCache_OnRebuildCache(long aPosition, long aLength, string aText)
         {
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                if (ProgressInfo.CancelClicked)
+                if (progressInfo.CancelClicked)
                 {
                     DbUpdateWorker.Stop();
                 }
-                if (ALength == 0)
-                    ProgressInfo.TextBlock.Text = string.Format("Выполняется кэширование таблицы {0} ({1})", AText, APosition);
+                if (aLength == 0)
+                    progressInfo.TextBlock.Text = string.Format("Выполняется кэширование таблицы {0} ({1})", aText, aPosition);
                 else
-                    ProgressInfo.TextBlock.Text = string.Format("Выполняется кэширование таблицы {0} ({1}/{2})", AText, APosition, ALength);
-                ProgressInfo.ProgressBar.Value = APosition;
-                ProgressInfo.ProgressBar.Maximum = ALength;
-                ProgressInfo.ProgressBar.IsIndeterminate = ALength == 0;
+                    progressInfo.TextBlock.Text = string.Format("Выполняется кэширование таблицы {0} ({1}/{2})", aText, aPosition, aLength);
+                progressInfo.ProgressBar.Value = aPosition;
+                progressInfo.ProgressBar.Maximum = aLength;
+                progressInfo.ProgressBar.IsIndeterminate = aLength == 0;
             }));
         }
 
@@ -100,7 +87,7 @@ namespace Fias.Update
         {
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                ProgressInfo.Close();
+                progressInfo.Close();
                 btnStop.IsEnabled = true;
             }));
         }
@@ -109,9 +96,8 @@ namespace Fias.Update
         {
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                ProgressInfo = new FiasProgressInfo();
-                ProgressInfo.TextBlock.Text = "Подготовка к кэшированию";
-                ProgressInfo.Show();
+                progressInfo = new FiasProgressInfo {TextBlock = {Text = "Подготовка к кэшированию"}};
+                progressInfo.Show();
             }));
         }
 

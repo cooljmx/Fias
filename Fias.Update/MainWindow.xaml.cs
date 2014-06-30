@@ -1,30 +1,21 @@
-﻿using DevExpress.Xpf.Core;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Common;
+using Fias.Update.Lib;
 
 namespace Fias.Update
 {
-    public partial class MainWindow : DXWindow
+    public partial class MainWindow
     {
+        private readonly Model model = Singleton<Model>.Instance;
+        public Model Model { get { return model; } }
+
         public MainWindow()
         {
-            if (!Directory.Exists(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Data"))
-                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+"\\Data");
+            if (!Directory.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Data"))
+                Directory.CreateDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+"\\Data");
             InitializeComponent();
             FiasDownloadWorkerUC.DownloadWorker.OnDownloadStart += DownloadWorker_OnDownloadStart;
             FiasDownloadWorkerUC.DownloadWorker.OnDownloadComplete += DownloadWorker_OnDownloadComplete;
@@ -184,7 +175,7 @@ namespace Fias.Update
                 case 2:
                     FiasConnectionUC.DoNext();
                     tabControl.SelectedIndex = 3;
-                    FiasDbUpdateWorkerUC.DbUpdateWorker.Open(FiasConnectionUC.Config.ConnectionString);
+                    FiasDbUpdateWorkerUC.DbUpdateWorker.Open(FiasConnectionUC.Config.ConnectionString,Model.SelectedServerType);
                     break;
                 case 3:
                     break;

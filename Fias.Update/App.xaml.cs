@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Navigation;
 
 namespace Fias.Update
 {
@@ -14,6 +8,9 @@ namespace Fias.Update
     /// </summary>
     public partial class App : Application
     {
-       
+        private void App_OnLoadCompleted(object sender, NavigationEventArgs e)
+        {
+            DevExpress.Xpf.Core.ThemeManager.ApplicationThemeName = "Seven";
+        }
     }
 }

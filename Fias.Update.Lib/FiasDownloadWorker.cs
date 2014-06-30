@@ -103,27 +103,27 @@ namespace Fias.Update.Lib
             var r = new Thread(DoGetFileInfoList);
             r.Start();      
         }      
-        private void DownloadFile(FiasFileInfo AFileInfo)
+        private void DownloadFile(FiasFileInfo aFileInfo)
         {
             using(var client = new WebClient())
             {
-                using (var remoteStream = client.OpenRead(AFileInfo.Url))
+                using (var remoteStream = client.OpenRead(aFileInfo.Url))
                 {
-                    if (!Directory.Exists(Path.GetDirectoryName(AFileInfo.FileName)))
-                        Directory.CreateDirectory(Path.GetDirectoryName(AFileInfo.FileName));
-                    var tmpFileName = Path.GetDirectoryName(AFileInfo.FileName) + "\\data.tmp";
+                    if (!Directory.Exists(Path.GetDirectoryName(aFileInfo.FileName)))
+                        Directory.CreateDirectory(Path.GetDirectoryName(aFileInfo.FileName));
+                    var tmpFileName = Path.GetDirectoryName(aFileInfo.FileName) + "\\data.tmp";
                     using (var localStream = new FileStream(tmpFileName, FileMode.Create, FileAccess.Write))
                     {
                         long totalBytesReaded = 0;
                         const int bufferLength = 1024 * 1024;
 
-                        while (totalBytesReaded < AFileInfo.Length)
+                        while (totalBytesReaded < aFileInfo.Length)
                         {
                             if (stopEvent.WaitOne(0))
                                 throw new StopException();
 
                             byte[] buffer = null;
-                            buffer = AFileInfo.Length - totalBytesReaded < bufferLength ? new byte[Convert.ToInt32(AFileInfo.Length - totalBytesReaded)] : new byte[bufferLength];
+                            buffer = aFileInfo.Length - totalBytesReaded < bufferLength ? new byte[Convert.ToInt32(aFileInfo.Length - totalBytesReaded)] : new byte[bufferLength];
                             if (remoteStream != null)
                             {
                                 var bytesReaded = remoteStream.Read(buffer, 0, buffer.Length);
@@ -132,15 +132,15 @@ namespace Fias.Update.Lib
                             }
 
                             if (OnDownloadProgress != null)
-                                OnDownloadProgress(totalBytesReaded, AFileInfo.Length, string.Format("Загрузка {0}", AFileInfo.FileName));
+                                OnDownloadProgress(totalBytesReaded, aFileInfo.Length, string.Format("Загрузка {0}", aFileInfo.FileName));
                         }
                     }
 
-                    if (File.Exists(AFileInfo.FileName))
-                        File.Delete(AFileInfo.FileName);
-                    File.Move(tmpFileName, AFileInfo.FileName);
-                    AFileInfo.IsExists = true;
-                    AFileInfo.Checked = false;
+                    if (File.Exists(aFileInfo.FileName))
+                        File.Delete(aFileInfo.FileName);
+                    File.Move(tmpFileName, aFileInfo.FileName);
+                    aFileInfo.IsExists = true;
+                    aFileInfo.Checked = false;
 
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using Fias.Update.Lib.Mapping;
+using FirebirdSql.Data.FirebirdClient;
 using Rade.DbTools;
 using System;
 using System.Data.Common;
@@ -10,6 +11,12 @@ using System.Windows.Threading;
 
 namespace Fias.Update.Lib
 {
+    public enum ServerType
+    {
+        MsSql = 0,
+        Firebird = 1
+    }
+
     public class FiasDbUpdateWorker : FiasCustomWorker
     {
         public event WorkerEventHandler OnUpdateStart;
@@ -28,10 +35,18 @@ namespace Fias.Update.Lib
             get { return dbCache; }
         }
 
-        public void Open(string aConnectionString)
+        public void Open(string aConnectionString, ServerType serverType)
         {
             dbCache.ConnectionString = aConnectionString;
-            connection = new SqlConnection {ConnectionString = aConnectionString};
+            switch (serverType)
+            {
+                case ServerType.Firebird:
+                    connection = new FbConnection {ConnectionString = aConnectionString};
+                    break;
+                case ServerType.MsSql:
+                    connection = new SqlConnection { ConnectionString = aConnectionString };
+                    break;
+            }
             connection.Open();
 
             /*using (var transaction = connection.BeginTransaction())
