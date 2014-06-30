@@ -1,0 +1,133 @@
+﻿<dx:DXWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        x:Class="Fias.Net4.FiasCard" 
+        x:ClassModifier="internal"
+        xmlns:local ="clr-namespace:Fias.Net4"
+        Title="Выбор информации по ФИАС" Height="290" Width="555" Loaded="Window_Loaded" Unloaded="Window_Unloaded" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/Fias.Net4;component/Images/earth2.png"
+        dx:ThemeManager.ThemeName="Seven"> 
+    <dx:DXWindow.Resources>
+        <local:FiasColorConverter x:Key="FiasColorConverter" />
+        <DataTemplate x:Key="ColorItemTemplate">
+            <TextBlock Text="{Binding FullName}" Foreground="{Binding LiveStatus, Converter={StaticResource FiasColorConverter}}"/>
+        </DataTemplate>
+    </dx:DXWindow.Resources>
+    <dxlc:LayoutControl Padding="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        DataContext="{Binding RelativeSource={RelativeSource AncestorType=dx:DXWindow}, Path=Model}">
+        <dxlc:LayoutGroup Orientation="Vertical">
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Регион" FontWeight="Bold" >
+                    <dxe:ComboBoxEdit Height="24" ItemsSource="{Binding RegionCollection}" SelectedItem="{Binding SelectedRegion}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedRegion.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearRegion_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                        
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top" Visibility="Collapsed">
+                <dxlc:LayoutItem Label="Автономный округ" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding AutoCollection}" SelectedItem="{Binding SelectedAuto}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedAuto.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearAuto_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Район" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding AreaCollection}" SelectedItem="{Binding SelectedArea}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedArea.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearArea_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Город" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding CityCollection}" SelectedItem="{Binding SelectedCity}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedCity.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearCity_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Внутригородская территория" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding CtarCollection}" SelectedItem="{Binding SelectedCtar}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedCtar.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearCtar_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Населенный пунтк" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding PlaceCollection}" SelectedItem="{Binding SelectedPlace}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedPlace.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearPlace_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Улица" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding StreetCollection}" SelectedItem="{Binding SelectedStreet}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedStreet.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearStreet_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Top" Name="HouseGroup">
+                <dxlc:LayoutItem Label="Дом" FontWeight="Bold">
+                    <dxe:ComboBoxEdit Height="22" ItemsSource="{Binding HouseCollection}" SelectedItem="{Binding SelectedHouse}" 
+                                      DisplayMember="FullName" IncrementalFiltering="True" FilterCondition="Contains" ImmediatePopup="True" 
+                                      IsTextEditable="True" ValidateOnTextInput="False" AutoComplete="False" 
+                                      ItemTemplate="{Binding Source={StaticResource ColorItemTemplate}}" 
+                                      Foreground="{Binding SelectedHouse.LiveStatus, Converter={StaticResource FiasColorConverter}}" FontWeight="Normal">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo Content="X" Click="ClearHouse_Click"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <Button x:Name="BtnOk" Height="22" Width="70" Content="Ок" IsDefault="True" Click="btnOk_Click" />
+                <Button x:Name="BtnCancel" Height="22" Width="70" Content="Отмена" Click="btnCancel_Click" IsCancel="True" />
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</dx:DXWindow>

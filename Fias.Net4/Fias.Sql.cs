@@ -1,0 +1,103 @@
+﻿namespace Fias.Net4
+{
+    internal class FiasSql
+    {
+        public static readonly string RegionSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 1 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_REGION ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 1
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string AutoSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 2 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_AUTO ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 2
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string AreaSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 3 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_AREA ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 3
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string CitySql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 4 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_CITY ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 4
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string CtarSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 5 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_CTAR ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 5
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string PlaceSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 6 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_PLACE ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 6
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string StreetSql =
+            @"SELECT A.ID_AO_GU ID, A.FORMAL_NAME || ' (' || S.SOCRNAME || ')' FULL_NAME, A.FORMAL_NAME, S.SCNAME, S.SOCRNAME, 7 ADDR_LEVEL, A.ID_KLADR KLADR, A.ID_STREET ID_DETAIL, A.ID_LIVE_STATUS
+FROM FIAS_ADDRESS_OBJECTS A      
+    JOIN FIAS_REF_SOCRBASE S ON S.SCNAME = A.SHORT_NAME AND A.ID_LEVEL = S.ID_LEVEL
+WHERE
+    A.ID_LEVEL = 7
+    AND A.ID_PARENT_AO_GU = '{0}'
+    AND(
+        (A.ID_LIVE_STATUS = 1 AND A.ID_CURR_STATUS = 0)
+        /*OR (A.ID_LIVE_STATUS = 0 AND A.ID_CURR_STATUS = 1)*/
+    )
+ORDER BY A.FORMAL_NAME";
+
+        public static readonly string HouseSql =
+            @"SELECT A.ID_HOUSE_GU ID, coalesce(a.house_num,'') || coalesce(' корпус '||a.build_num,'') || coalesce(' строение '||a.struc_num,'') FULL_NAME, coalesce(a.house_num,'') || coalesce(' корпус '||a.build_num,'') || coalesce(' строение '||a.struc_num,'') FORMAL_NAME, '' SCNAME, '' SOCRNAME, 8 ADDR_LEVEL, '' KLADR, 0 ID_DETAIL, 1 id_live_status
+FROM FIAS_HOUSES A
+WHERE
+    A.ID_AO_GU = '{0}'
+    and a.dt_end > current_timestamp
+ORDER BY FULL_NAME";
+    }
+}

@@ -1,0 +1,384 @@
+﻿<Window x:Class="Fias.Net4.Host.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="620" Width="525"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Name="GroupBoxDB" Height="150">
+            <GroupBox.Header>Database</GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Connection string"/>
+                    <TextBox Name="txtConnectionString" Height="80" Grid.Column="1" 
+                             Text="data source=localhost;initial catalog=d:\db\fias.fdb;user id=sysdba;password=masterkey;client library=C:\RedDatabase(x64)\wow64\fbclient.dll;character set=WIN1251;pooling=false" 
+                             TextWrapping="Wrap"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="110" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Width="100" Height="26" IsEnabled="True" Name="btnTestConnection" 
+                            Click="btnTestConnection_Click" Content="Connection test"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <TabControl Grid.Row="1" SelectedIndex="2">
+            <TabItem>
+                <TabItem.Header>GUI search</TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="101"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="26" />
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0">
+                        <GroupBox.Header>Input params</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="GUID"/>
+                                <TextBox Grid.Column="1" Height="22" Name="gsiGUID"
+                                         Text="6a4821c5-868f-4628-a14c-ea652434e910"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Kladr"/>
+                                <TextBox Grid.Column="1" Height="22" Name="gsiKladr"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="1" VerticalAlignment="Center" Content="Except houses" Name="ExceptCheckBox"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1">
+                        <GroupBox.Header>Result</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="GUID"/>
+                                <TextBox Grid.Column="1" Height="22" Name="gsrGUID" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Kladr"/>
+                                <TextBox Grid.Column="1" Height="22" Name="gsrKladr" IsReadOnly="True"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Width="80" Content="Browse" Click="btnGuiShow_Click" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>Search by address attr</TabItem.Header>                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="231" />
+                        <RowDefinition Height="101" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="26" />
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Height="231">
+                        <GroupBox.Header>Input params</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Region" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiRegion" Text="лип"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Auto" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiAuto"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Area" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiArea"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="City" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiCity" Text="лип"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Ctar" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiCtar"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Place" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiPlace"/>
+                            </Grid>
+                            <Grid Grid.Row="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Street" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiStreet" Text="октябрьская"/>
+                            </Grid>
+                            <Grid Grid.Row="7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="House" />
+                                <TextBox Grid.Column="1" Height="22" Name="saiHouse" Text="3"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Height="101">
+                        <GroupBox.Header>Result</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="GUID"/>
+                                <TextBox Grid.Column="1" Height="22" Name="sarGUID" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Kladr"/>
+                                <TextBox Grid.Column="1" Height="22" Name="sarKladr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Level"/>
+                                <TextBox Grid.Column="1" Height="22" Name="sarLevel" IsReadOnly="True"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Width="80" Content="Browse" Click="btnSearchByAddress_Click" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>Search by GUID</TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75" />
+                        <RowDefinition Height="231" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="26" />
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0">
+                        <GroupBox.Header>Input params</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="GUID"/>
+                                <TextBox Grid.Column="1" Height="22" Name="sgiGUID"
+                                         Text="6a4821c5-868f-4628-a14c-ea652434e910"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Kladr"/>
+                                <TextBox Grid.Column="1" Height="22" Name="sgiKladr"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" >
+                        <GroupBox.Header>Result</GroupBox.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                                <RowDefinition Height="26" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Region" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrRegion" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrRegionSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Auto" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrAuto" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrAutoSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Area" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrArea" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrAreaSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="City" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrCity" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrCitySocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Ctar" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrCtar" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrCtarSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Place" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrPlace" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrPlaceSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Street" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrStreet" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Height="22" Name="sgrStreetSocr" IsReadOnly="True"/>
+                            </Grid>
+                            <Grid Grid.Row="7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="House" />
+                                <TextBox Grid.Column="1" Height="22" Name="sgrHouse" IsReadOnly="True"/>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Width="80" Content="Browse" Click="btnSearchByGuid_Click" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

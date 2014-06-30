@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Fias.Update.FiasDbUpdateWorkerUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Загрузка данных в БД" VerticalAlignment="Center" FontSize="16" Padding="5,0,0,0" FontWeight="Bold" />
+        <dxg:GridControl Grid.Row="1" AutoGenerateColumns="None" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+			ItemsSource="{Binding FileInfoList}" >
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Width="55" FixedWidth="True" Header="В схеме" Binding="{Binding Checked, Mode=OneWay}" VisibleIndex="0"/>
+                <dxg:GridColumn Width="65" FixedWidth="True" Header="Загружен" Binding="{Binding IsExists, Mode=OneWay}" VisibleIndex="1"/>
+                <dxg:GridColumn Header="Файл" Binding="{Binding FileName, Mode=OneWay}" VisibleIndex="2"/>
+                <dxg:GridColumn Width="230" FixedWidth="True" Header="Состояние" Binding="{Binding Status, Mode=OneWay}" VisibleIndex="3"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView ShowTotalSummary="False" ShowGroupPanel="False" AutoWidth="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Обновить" Width="95" IsDefault="True" Name="btnUpdate" Click="btnUpdate_Click"/>
+            <Button Grid.Column="2" Content="Отмена" Width="95" IsDefault="True" Name="btnStop" Click="btnStop_Click" IsEnabled="False"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{369B92B9-30BF-4071-BD12-E5147401B3A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fias.Update.Lib</RootNamespace>
+    <AssemblyName>Fias.Update.Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fias.Update.Lib.Xsd.cs">
+      <DependentUpon>Fias.Update.Lib.Xsd.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FiasCustomWorker.cs" />
+    <Compile Include="FiasDbCache.cs" />
+    <Compile Include="FiasDbUpdateWorker.cs" />
+    <Compile Include="FiasDbUpdateWorker.ItemWorker.cs" />
+    <Compile Include="FiasFileInfo.cs" />
+    <Compile Include="Mapping\Fias.Map.Database.cs" />
+    <Compile Include="Mapping\Fias.Map.Field.cs" />
+    <Compile Include="Mapping\Fias.Map.Table.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\FiasServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="FiasDownloadWorker.cs" />
+    <Compile Include="FiasUnrarWorker.cs" />
+    <Compile Include="VirtualNotifyPropertyChanged.cs" />
+    <Compile Include="Xml\Fias.XmlFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Rade\Compression\Compression\Rade.Compression.csproj">
+      <Project>{94a253e1-4a68-4940-a2d3-a4e12c76ef91}</Project>
+      <Name>Rade.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Rade\DbTools\DbTools\Rade.DbTools.csproj">
+      <Project>{E042DD3B-285D-4B36-A3A6-67E0807888B0}</Project>
+      <Name>Rade.DbTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\GitHub\Rade\Hash\Rade.Hash\Rade.Hash.csproj">
+      <Project>{74ae8267-c462-446e-bbca-948929a39f2e}</Project>
+      <Name>Rade.Hash</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Fias.Mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Fias.Update.Lib.Xsd.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Fias.Mapping.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Service References\FiasServiceReference\DownloadService.wsdl" />
+    <None Include="Service References\FiasServiceReference\Fias.Update.Lib.FiasServiceReference.DownloadFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FiasServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FiasServiceReference\DownloadService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FiasServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FiasServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FiasServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

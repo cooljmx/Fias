@@ -1,0 +1,42 @@
+﻿<dx:DXWindow x:Class="Fias.Update.MainWindow"
+        xmlns:local="clr-namespace:Fias.Update"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="СПО импорта справочников ФИАС" Height="464" Width="673" WindowState="Maximized" WindowStartupLocation="CenterScreen" 
+        Loaded="Window_Loaded" Closing="Window_Closing" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <dx:DXTabControl Grid.Row="0" Padding="0" Name="tabControl" SelectedIndex="0">
+            <dx:DXTabItem Header="Downloads">
+                <local:FiasDownloadWorkerUserControl Width="Auto" Height="Auto" x:Name="FiasDownloadWorkerUC"/>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Unrar">
+                <local:FiasUnrarWorkerUserControl Width="Auto" Height="Auto" x:Name="FiasUnrarWorkerUC"/>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Connection">
+                <local:FiasConnectionUserControl x:Name="FiasConnectionUC" />
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Update">
+                <local:FiasDbUpdateWorkerUserControl x:Name="FiasDbUpdateWorkerUC" />
+            </dx:DXTabItem>
+            <dx:DXTabControl.View>
+                <dx:TabControlMultiLineView HeaderLocation="None" />
+            </dx:DXTabControl.View>
+        </dx:DXTabControl>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Name="btnBack" Content="Назад" Width="95" Click="btnBack_Click"/>
+            <Button Grid.Column="2" Name="btnNext" Content="Далее" Width="95" IsDefault="True" Click="btnNext_Click"/>
+            <Button Grid.Column="3" Name="btnClose" Content="Закрыть" Width="95" Click="btnClose_Click"/>
+        </Grid>
+    </Grid>
+</dx:DXWindow>

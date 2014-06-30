@@ -1,0 +1,62 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             x:Class="Fias.Update.FiasDownloadWorkerUserControl" 
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="1024" Height="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Загрузка данных с веб-сервиса http://fias.nalog.ru" VerticalAlignment="Center" FontSize="16" Padding="5,0,0,0" FontWeight="Bold" />
+        <dxg:GridControl Grid.Row="1" AutoGenerateColumns="None" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+			ItemsSource="{Binding FileInfoList}" >            
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Width="70" FixedWidth="True" Header="Загружен" Binding="{Binding IsExists, Mode=OneWay}"/>
+                <dxg:GridColumn Width="50" FixedWidth="True" Header="Версия" Binding="{Binding Version}"/>
+                <dxg:GridColumn Width="150" FixedWidth="True" Header="Описание" Binding="{Binding Description}"/>
+                <dxg:GridColumn Header="URL" Width="Auto" Binding="{Binding Url}"/>
+                <dxg:GridColumn Width="90" FixedWidth="True" Header="Размер" Binding="{Binding LengthStr}">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Right"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <!--<dxg:GridColumn Header="Статус" >
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ProgressBarEditSettings Maximum="{Binding StatusMax}" />
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <ProgressBar Maximum="{Binding RowData.Row.StatusMax}" Value="{Binding RowData.Row.StatusPos}" />
+                                <TextBlock Text="{Binding RowData.Row.Status}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>-->
+                <dxg:GridColumn Width="80" FixedWidth="True" Header="В загрузку" Binding="{Binding Checked, Mode=TwoWay}">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView ShowTotalSummary="False" ShowGroupPanel="False" AutoWidth="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{Binding LastError}" Foreground="Red" Margin="2,2,2,2"/>
+            <Button Grid.Column="1" Content="Выполнить" Width="95" IsDefault="True" Click="Button_Click" x:Name="btnDownload"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

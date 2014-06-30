@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Служба получения обновлений</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx">
+      <s:element name="GetLastDownloadFileInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastDownloadFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastDownloadFileInfoResult" type="tns:DownloadFileInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DownloadFileInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VersionId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TextVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiasCompleteDbfUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiasCompleteXmlUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiasDeltaDbfUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiasDeltaXmlUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kladr4ArjUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kladr47ZUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllDownloadFileInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllDownloadFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDownloadFileInfoResult" type="tns:ArrayOfDownloadFileInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDownloadFileInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DownloadFileInfo" nillable="true" type="tns:DownloadFileInfo" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLastDownloadFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastDownloadFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLastDownloadFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastDownloadFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDownloadFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDownloadFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDownloadFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDownloadFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DownloadServiceSoap">
+    <wsdl:operation name="GetLastDownloadFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Возвращает информацию о последней версии файлов, доступных для скачивания</wsdl:documentation>
+      <wsdl:input message="tns:GetLastDownloadFileInfoSoapIn" />
+      <wsdl:output message="tns:GetLastDownloadFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDownloadFileInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Возвращает информацию о всех версиях файлов, доступных для скачивания</wsdl:documentation>
+      <wsdl:input message="tns:GetAllDownloadFileInfoSoapIn" />
+      <wsdl:output message="tns:GetAllDownloadFileInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DownloadServiceSoap" type="tns:DownloadServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastDownloadFileInfo">
+      <soap:operation soapAction="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx/GetLastDownloadFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDownloadFileInfo">
+      <soap:operation soapAction="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx/GetAllDownloadFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DownloadServiceSoap12" type="tns:DownloadServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastDownloadFileInfo">
+      <soap12:operation soapAction="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx/GetLastDownloadFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDownloadFileInfo">
+      <soap12:operation soapAction="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx/GetAllDownloadFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DownloadService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Служба получения обновлений</wsdl:documentation>
+    <wsdl:port name="DownloadServiceSoap" binding="tns:DownloadServiceSoap">
+      <soap:address location="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DownloadServiceSoap12" binding="tns:DownloadServiceSoap12">
+      <soap12:address location="http://fias.nalog.ru/WebServices/Public/DownloadService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

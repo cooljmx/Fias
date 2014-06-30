@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<FiasDatabaseMap xsi:noNamespaceSchemaLocation="Fias.Mapping.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Tables>
+    <FiasTableMap XmlName="ActualStatus" DatabaseName="FIAS_REF_ACTSTAT" XmlDescription="AS_ACTSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="ACTSTATID" DatabaseName="ID_ACTSTAT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="CenterStatus" DatabaseName="FIAS_REF_CENTERST" XmlDescription="AS_CENTERST" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="CENTERSTID" DatabaseName="ID_CENTERST" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="CurrentStatus" DatabaseName="FIAS_REF_CURENTST" XmlDescription="AS_CURENTST" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="CURENTSTID" DatabaseName="ID_CURENTST" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="EstateStatus" DatabaseName="FIAS_REF_ESTSTAT" XmlDescription="AS_ESTSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="ESTSTATID" DatabaseName="ID_ESTSTAT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="HouseStateStatus" DatabaseName="FIAS_REF_HSTSTAT" XmlDescription="AS_HSTSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="HOUSESTID" DatabaseName="ID_HOUSEST" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="IntervalStatus" DatabaseName="FIAS_REF_INTVSTAT" XmlDescription="AS_INTVSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="INTVSTATID" DatabaseName="ID_INTVSTAT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="NormativeDocumentType" DatabaseName="FIAS_REF_NDTYPE" XmlDescription="AS_NDOCTYPE" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="NDTYPEID" DatabaseName="ID_NDTYPE" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="OperationStatus" DatabaseName="FIAS_REF_OPERSTAT" XmlDescription="AS_OPERSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="OPERSTATID" DatabaseName="ID_OPERSTAT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="AddressObjectType" DatabaseName="FIAS_REF_SOCRBASE" XmlDescription="AS_SOCRBASE" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="KOD_T_ST" DatabaseName="ID_KOD_T_ST" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="LEVEL" DatabaseName="ID_LEVEL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SCNAME" DatabaseName="SCNAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SOCRNAME" DatabaseName="SOCRNAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="StructureStatus" DatabaseName="FIAS_REF_STRSTAT" XmlDescription="AS_STRSTAT" OrderNum="0">
+      <Fields>
+        <FiasFieldMap XmlName="STRSTATID" DatabaseName="ID_STRSTAT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="NAME" DatabaseName="NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SHORTNAME" DatabaseName="SHORT_NAME" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    
+    <FiasTableMap XmlName="Object" DatabaseName="FIAS_ADDRESS_OBJECTS" XmlDescription="AS_ADDROBJ" OrderNum="2">
+      <Fields>
+        <FiasFieldMap XmlName="AOID" DatabaseName="ID_AO" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="FORMALNAME" DatabaseName="FORMAL_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="REGIONCODE" DatabaseName="ID_REGION" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AUTOCODE" DatabaseName="ID_AUTO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AREACODE" DatabaseName="ID_AREA" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CITYCODE" DatabaseName="ID_CITY" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CTARCODE" DatabaseName="ID_CTAR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PLACECODE" DatabaseName="ID_PLACE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STREETCODE" DatabaseName="ID_STREET" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="EXTRCODE" DatabaseName="ID_EXTR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SEXTCODE" DatabaseName="ID_SEXT" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OFFNAME" DatabaseName="OFF_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SHORTNAME" DatabaseName="SHORT_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOLEVEL" DatabaseName="ID_LEVEL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PARENTGUID" DatabaseName="ID_PARENT_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PREVID" DatabaseName="ID_PREV" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NEXTID" DatabaseName="ID_NEXT" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CODE" DatabaseName="ID_KLADR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ACTSTATUS" DatabaseName="ID_ACT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CENTSTATUS" DatabaseName="ID_CENT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OPERSTATUS" DatabaseName="ID_OPER_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CURRSTATUS" DatabaseName="ID_CURR_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORMDOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="LIVESTATUS" DatabaseName="ID_LIVE_STATUS" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="HouseInterval" DatabaseName="FIAS_HOUSE_INTERVALS" XmlDescription="AS_HOUSEINT" OrderNum="3">
+      <Fields>
+        <FiasFieldMap XmlName="HOUSEINTID" DatabaseName="ID_HOUSE_INT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="INTGUID" DatabaseName="ID_HOUSE_INT_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTSTART" DatabaseName="INT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTEND" DatabaseName="INT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTSTATUS" DatabaseName="ID_INT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORM_DOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="COUNTER" DatabaseName="COUNTER" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="House" DatabaseName="FIAS_HOUSES" XmlDescription="AS_HOUSE" OrderNum="3">
+      <Fields>
+        <FiasFieldMap XmlName="HOUSEID" DatabaseName="ID_HOUSE" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="HOUSEGUID" DatabaseName="ID_HOUSE_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="HOUSENUM" DatabaseName="HOUSE_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ESTSTATUS" DatabaseName="ID_EST_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="BUILDNUM" DatabaseName="BUILD_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STRUCNUM" DatabaseName="STRUC_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STRSTATUS" DatabaseName="ID_STR_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STATSTATUS" DatabaseName="ID_STAT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORMDOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="COUNTER" DatabaseName="COUNTER" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="Landmark" DatabaseName="FIAS_LANDMARKS" XmlDescription="AS_LANDMARK" OrderNum="3">
+      <Fields>
+        <FiasFieldMap XmlName="LANDID" DatabaseName="ID_LANDMARK" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="LANDGUID" DatabaseName="ID_LANDMARK_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="LOCATION" DatabaseName="LOCATION" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORM_DOC" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="NormativeDocument" DatabaseName="FIAS_NORM_DOCUMENTS" XmlDescription="AS_NORMDOC" OrderNum="1">
+      <Fields>
+        <FiasFieldMap XmlName="NORMDOCID" DatabaseName="ID_NORM_DOC" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="DOCNAME" DatabaseName="DOCNAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCDATE" DatabaseName="DT_DOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCNUM" DatabaseName="DOC_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCTYPE" DatabaseName="ID_DOC_TYPE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DICIMGID" DatabaseName="ID_DOC_IMG" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+
+    <FiasTableMap XmlName="Object" DatabaseName="FIAS_DEL_ADDRESS_OBJECTS" XmlDescription="AS_DEL_ADDROBJ" OrderNum="5" RefTable="FIAS_ADDRESS_OBJECTS">
+      <Fields>
+        <FiasFieldMap XmlName="AOID" DatabaseName="ID_AO" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="FORMALNAME" DatabaseName="FORMAL_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="REGIONCODE" DatabaseName="ID_REGION" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AUTOCODE" DatabaseName="ID_AUTO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AREACODE" DatabaseName="ID_AREA" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CITYCODE" DatabaseName="ID_CITY" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CTARCODE" DatabaseName="ID_CTAR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PLACECODE" DatabaseName="ID_PLACE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STREETCODE" DatabaseName="ID_STREET" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="EXTRCODE" DatabaseName="ID_EXTR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SEXTCODE" DatabaseName="ID_SEXT" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OFFNAME" DatabaseName="OFF_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="SHORTNAME" DatabaseName="SHORT_NAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOLEVEL" DatabaseName="ID_LEVEL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PARENTGUID" DatabaseName="ID_PARENT_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="PREVID" DatabaseName="ID_PREV" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NEXTID" DatabaseName="ID_NEXT" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CODE" DatabaseName="ID_KLADR" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ACTSTATUS" DatabaseName="ID_ACT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CENTSTATUS" DatabaseName="ID_CENT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OPERSTATUS" DatabaseName="ID_OPER_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="CURRSTATUS" DatabaseName="ID_CURR_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORMDOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="LIVESTATUS" DatabaseName="ID_LIVE_STATUS" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="HouseInterval" DatabaseName="FIAS_DEL_HOUSE_INTERVALS" XmlDescription="AS_DEL_HOUSEINT" OrderNum="4" RefTable="FIAS_HOUSE_INTERVALS">
+      <Fields>
+        <FiasFieldMap XmlName="HOUSEINTID" DatabaseName="ID_HOUSE_INT" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="INTGUID" DatabaseName="ID_HOUSE_INT_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTSTART" DatabaseName="INT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTEND" DatabaseName="INT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="INTSTATUS" DatabaseName="ID_INT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORM_DOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="COUNTER" DatabaseName="COUNTER" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="House" DatabaseName="FIAS_DEL_HOUSES" XmlDescription="AS_DEL_HOUSE" OrderNum="4" RefTable="FIAS_HOUSES">
+      <Fields>
+        <FiasFieldMap XmlName="HOUSEID" DatabaseName="ID_HOUSE" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="HOUSEGUID" DatabaseName="ID_HOUSE_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="HOUSENUM" DatabaseName="HOUSE_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ESTSTATUS" DatabaseName="ID_EST_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="BUILDNUM" DatabaseName="BUILD_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STRUCNUM" DatabaseName="STRUC_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STRSTATUS" DatabaseName="ID_STR_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STATSTATUS" DatabaseName="ID_STAT_STATUS" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORMDOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="COUNTER" DatabaseName="COUNTER" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="Landmark" DatabaseName="FIAS_DEL_LANDMARKS" XmlDescription="AS_DEL_LANDMARK" OrderNum="4" RefTable="FIAS_LANDMARKS">
+      <Fields>
+        <FiasFieldMap XmlName="LANDID" DatabaseName="ID_LANDMARK" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="LANDGUID" DatabaseName="ID_LANDMARK_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="AOGUID" DatabaseName="ID_AO_GU" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="LOCATION" DatabaseName="LOCATION" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="POSTALCODE" DatabaseName="ID_POSTAL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSFL" DatabaseName="ID_IFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSFL" DatabaseName="ID_TERRIFNSFL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="IFNSUL" DatabaseName="ID_IFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="TERRIFNSUL" DatabaseName="ID_TERRIFNSUL" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKATO" DatabaseName="ID_OKATO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="OKTMO" DatabaseName="ID_OKTMO" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="UPDATEDATE" DatabaseName="DT_UPDATE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="STARTDATE" DatabaseName="DT_START" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="ENDDATE" DatabaseName="DT_END" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="NORMDOC" DatabaseName="ID_NORM_DOC" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+    <FiasTableMap XmlName="NormativeDocument" DatabaseName="FIAS_DEL_NORM_DOCUMENTS" XmlDescription="AS_DEL_NORMDOC" OrderNum="4" RefTable="FIAS_NORM_DOCUMENTS">
+      <Fields>
+        <FiasFieldMap XmlName="NORMDOCID" DatabaseName="ID_NORM_DOC" IsPrimaryKey="true" />
+        <FiasFieldMap XmlName="DOCNAME" DatabaseName="DOCNAME" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCDATE" DatabaseName="DT_DOC" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCNUM" DatabaseName="DOC_NUM" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DOCTYPE" DatabaseName="ID_DOC_TYPE" IsPrimaryKey="false" />
+        <FiasFieldMap XmlName="DICIMGID" DatabaseName="ID_DOC_IMG" IsPrimaryKey="false" />
+      </Fields>
+    </FiasTableMap>
+  </Tables>
+</FiasDatabaseMap>

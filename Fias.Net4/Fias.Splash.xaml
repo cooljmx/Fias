@@ -1,0 +1,8 @@
+﻿<Window x:Class="Fias.Net4.FiasSplash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FiasSplash" Height="100" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Загрузка данных ...</TextBlock>
+    </Grid>
+</Window>
