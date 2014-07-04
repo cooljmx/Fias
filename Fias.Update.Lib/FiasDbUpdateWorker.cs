@@ -38,6 +38,7 @@ namespace Fias.Update.Lib
         public void Open(string aConnectionString, ServerType serverType)
         {
             dbCache.ConnectionString = aConnectionString;
+            dbCache.ServerType = serverType;
             switch (serverType)
             {
                 case ServerType.Firebird:
@@ -49,11 +50,13 @@ namespace Fias.Update.Lib
             }
             connection.Open();
 
-            /*using (var transaction = connection.BeginTransaction())
-            {
-                DbData.GetFieldValue(connection, transaction, "select rdb$set_context('USER_SESSION','RPL_SERVICE','1') from rdb$database;");
-                transaction.Commit();
-            }*/
+            if (serverType==ServerType.Firebird)
+                using (var transaction = connection.BeginTransaction())
+                {
+                    DbData.GetFieldValue(connection, transaction,
+                        "select rdb$set_context('USER_SESSION','RPL_SERVICE','1') from rdb$database;");
+                    transaction.Commit();
+                }
 
             var t = new Thread(LoadData);
             t.Start();

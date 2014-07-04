@@ -33,7 +33,7 @@ namespace Fias.Update
             DownloadWorker.OnGetFileInfoListStart += DownloadWorker_OnGetFileInfoListStart;
             DownloadWorker.OnGetFileInfoListComplete += DownloadWorker_OnGetFileInfoListComplete;
             DownloadWorker.OnGetFileInfoProgress += DownloadWorker_OnGetFileInfoProgress;
-            DownloadWorker.OnGetFileInfoListError += DownloadWorker_OnGetFileInfoListError;
+            //DownloadWorker.OnGetFileInfoListError += DownloadWorker_OnGetFileInfoListError;
         }
 
         void DownloadWorker_OnGetFileInfoListError(long aPosition, long aLength, string aText)

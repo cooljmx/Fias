@@ -20,7 +20,7 @@ namespace Fias.Update.Lib
         public event WorkerEventHandler OnGetFileInfoListStart;
         public event WorkerEventHandler OnGetFileInfoListComplete;
         public event WorkerProgressEventHandler OnGetFileInfoProgress;
-        public event WorkerProgressEventHandler OnGetFileInfoListError;
+        //public event WorkerProgressEventHandler OnGetFileInfoListError;
         
         public Dispatcher Dispatcher { get; set; }
         public string LastError { get { return lastError; } private set { lastError = value; NotifyPropertyChanged("LastError"); } } 

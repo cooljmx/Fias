@@ -4,7 +4,7 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="СПО импорта справочников ФИАС" Height="464" Width="673" WindowState="Maximized" WindowStartupLocation="CenterScreen" 
-        Loaded="Window_Loaded" Closing="Window_Closing" dx:ThemeManager.ThemeName="Seven">
+        Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

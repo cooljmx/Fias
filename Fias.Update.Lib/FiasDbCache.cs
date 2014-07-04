@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using Fias.Update.Lib.Mapping;
+using FirebirdSql.Data.FirebirdClient;
 using Rade.DbTools;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Fias.Update.Lib
         private string connectionString = string.Empty;
         private readonly ManualResetEvent stopEvent = new ManualResetEvent(false);
         public string ConnectionString { get { return connectionString; } set { connectionString = value; } }
+        public ServerType ServerType { get; set; }
 
         public event WorkerEventHandler OnRebuildCacheStart;
         public event WorkerEventHandler OnRebuildCacheComplete;
@@ -46,12 +48,16 @@ namespace Fias.Update.Lib
             try
             {
                 cache.Clear();
-                using (DbConnection connection = new SqlConnection(connectionString))
+                DbConnection connection;
+                if(ServerType == ServerType.Firebird) connection = new FbConnection(ConnectionString); else connection = new SqlConnection(ConnectionString);
+                try
                 {
                     connection.Open();
                     using (var transaction = connection.BeginTransaction())
                     {
-                        var databaseMap = FiasDatabaseMap.LoadFromFile(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Fias.Mapping.xml");
+                        var databaseMap =
+                            FiasDatabaseMap.LoadFromFile(
+                                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Fias.Mapping.xml");
                         foreach (var tableMap in databaseMap.Tables)
                         {
                             var pkFieldMap = tableMap.Fields.First(a => a.IsPrimaryKey);
@@ -60,7 +66,10 @@ namespace Fias.Update.Lib
                                 var counter = 0;
                                 var set = new HashSet<string>();
                                 cache.Add(tableMap.DatabaseName, set);
-                                query.SqlText = string.Format("select rtrim(ltrim({0})) {0} from {1};", pkFieldMap.DatabaseName, tableMap.DatabaseName);
+
+                                var sql = ServerType==ServerType.Firebird ? "select trim({0}) {0} from {1};" : "select rtrim(ltrim({0})) {0} from {1};";
+                                query.SqlText = string.Format(sql,
+                                    pkFieldMap.DatabaseName, tableMap.DatabaseName);
                                 query.ExecuteDataReader();
                                 while (query.DataReader.Read())
                                 {
@@ -70,11 +79,18 @@ namespace Fias.Update.Lib
 
                                     if (++counter%100000 != 0) continue;
                                     if (OnRebuildCache == null) continue;
-                                    OnRebuildCache(counter,cacheLength.ContainsKey(tableMap.DatabaseName) ? cacheLength[tableMap.DatabaseName] : 0, tableMap.DatabaseName);
+                                    OnRebuildCache(counter,
+                                        cacheLength.ContainsKey(tableMap.DatabaseName)
+                                            ? cacheLength[tableMap.DatabaseName]
+                                            : 0, tableMap.DatabaseName);
                                 }
                             }
                         }
                     }
+                }
+                finally
+                {
+                    connection.Dispose();
                 }
             }
             finally
@@ -82,28 +98,42 @@ namespace Fias.Update.Lib
                 if (OnRebuildCacheComplete != null)
                     OnRebuildCacheComplete();
             }             
-        }public void Add(string aTableName, string aValue)
+        }
+        
+        public void Add(string aTableName, string aValue)
         {
             cache[aTableName].Add(aValue);
         }
+        
         private void DoCacheLength()
         {
             cacheLength.Clear();
-            using (DbConnection connection = new SqlConnection(connectionString))
+            DbConnection connection;
+            if (ServerType == ServerType.Firebird) connection = new FbConnection(ConnectionString); else connection = new SqlConnection(ConnectionString);
+            try
             {
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
                 {
-                    var databaseMap = FiasDatabaseMap.LoadFromFile(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Fias.Mapping.xml");
+                    var databaseMap =
+                        FiasDatabaseMap.LoadFromFile(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
+                                                     "\\Fias.Mapping.xml");
                     foreach (var tableMap in databaseMap.Tables)
                     {
                         if (stopEvent.WaitOne(0))
-                            return;//throw new StopException();
+                            return; //throw new StopException();
                         var pkFieldMap = tableMap.Fields.First(a => a.IsPrimaryKey);
-                        var length = Convert.ToInt32(DbData.GetFieldValue(connection, transaction, string.Format("select count({0})from {1};", pkFieldMap.DatabaseName, tableMap.DatabaseName)));
+                        var length =
+                            Convert.ToInt32(DbData.GetFieldValue(connection, transaction,
+                                string.Format("select count({0})from {1};", pkFieldMap.DatabaseName,
+                                    tableMap.DatabaseName)));
                         cacheLength.Add(tableMap.DatabaseName, length);
                     }
                 }
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
     }
