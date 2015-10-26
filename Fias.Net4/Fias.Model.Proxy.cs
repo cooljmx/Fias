@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace Fias.Net4
 {    
-    public class FiasModelProxy
+    public class FiasModelProxy :IDisposable
     {
         private readonly FiasModel model = new FiasModel();
         private string guid = "";
@@ -127,6 +127,11 @@ namespace Fias.Net4
         { 
             model.ConnectionString = ConnectionString;
             return model.TestConnection();
+        }
+
+        public void Dispose()
+        {
+            model.Dispose();
         }
     }
 }

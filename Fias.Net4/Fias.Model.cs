@@ -225,6 +225,7 @@ namespace Fias.Net4
         {
             if (connection.State == ConnectionState.Connecting)
                 connection.Close();
+            connection.Dispose();
         }
 
         public int TestConnection()
